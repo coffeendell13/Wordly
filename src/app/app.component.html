@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="box-1"></div>
+    <div class="box-2">
+        <p>5 букв</p>
+        <button *ngIf="trigger.state === 'Start'" (click)="onStartGame()">
+            Начать игру
+        </button>
+        <table class="table-center-by-css">
+            <tbody>
+                <tr *ngFor="let row of field; let i = index">
+                    <td
+                        *ngFor="let cell of row; let j = index"
+                        [class.yes]="cell.state == 'Yes'"
+                        [class.no]="cell.state == 'No'"
+                        [class.wrong-place]="cell.state == 'WrongPlace'"
+                    >
+                        {{ cell.key | uppercase }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button
+            *ngIf="trigger.state === 'Finish'"
+            (click)="checkWord(enteredWord)"
+        >
+            Готово
+        </button>
+        <app-virtual-keyboard
+            style="align-content: center"
+            (onChange)="onClickByKey($event)"
+        ></app-virtual-keyboard>
+        <app-modal #titleModal></app-modal>
+    </div>
+    <div class="box-3"></div>
+</div>

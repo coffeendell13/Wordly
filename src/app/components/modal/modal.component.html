@@ -1,0 +1,9 @@
+<!-- <div *ngIf="isShow" style="position: absolute; width: 100%; height: 100%; top: 0px"> -->
+<div *ngIf="isShow">
+    <div class="modal">
+        <h3>{{ this.title }}</h3>
+        <button class="button" style="float: right" (click)="isShow = false">
+            Закрыть
+        </button>
+    </div>
+</div>
